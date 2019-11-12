@@ -31,7 +31,7 @@ clear
 #宝塔sspanel-v3-mod-uim-dev快速部署工具
 echo -e "感谢使用 “\033[32m 宝塔sspanel-v3-mod-uim-dev快速部署工具 \033[0m”"
 echo "----------------------------------------------------------------------------"
-echo -e "请注意这些要求:“\033[31m 宝塔版本=5.9 \033[0m”，添加网址PHP版本必须选择为“\033[31m PHP7.3 \033[0m”,添加完成后地址不要改动！"
+echo -e "请注意这些要求:“\033[31m 宝塔版本=5.9 \033[0m”，添加网址PHP版本必须选择为“\033[31m PHP7.2 \033[0m”,添加完成后地址不要改动！"
 echo "----------------------------------------------------------------------------"
 stty erase '^H' && read -p "请输入宝塔面板添加的网站域名,请不要修改添加之后的默认地址（例如:www.baidu.com，不带http/https）：" website
 stty erase '^H' && read -p "请输入宝塔面板添加的MySQL用户名：" mysqlusername
@@ -76,12 +76,12 @@ echo -e "${Info} 下载解压处理程序源码已完成"
 sleep 1
 ##处理php函数
 echo -e "${Info} 正在处理宝塔php内容"
-sed -i 's/system,//g' /www/server/php/73/etc/php.ini
-sed -i 's/proc_open,//g' /www/server/php/73/etc/php.ini
-sed -i 's/proc_get_status,//g' /www/server/php/73/etc/php.ini
-sed -i 's/putenv,//g' /www/server/php/73/etc/php.ini
-sed -i 's/dynamic/static/g' /www/server/php/73/etc/php-fpm.conf
-sed -i 's/display_errors = On/display_errors = Off/g' /www/server/php/73/etc/php.ini
+sed -i 's/system,//g' /www/server/php/72/etc/php.ini
+sed -i 's/proc_open,//g' /www/server/php/72/etc/php.ini
+sed -i 's/proc_get_status,//g' /www/server/php/72/etc/php.ini
+sed -i 's/putenv,//g' /www/server/php/72/etc/php.ini
+sed -i 's/dynamic/static/g' /www/server/php/72/etc/php-fpm.conf
+sed -i 's/display_errors = On/display_errors = Off/g' /www/server/php/72/etc/php.ini
 echo -e "${Info} 处理宝塔php内容已完成"
 sleep 1
 ##导入数据库
