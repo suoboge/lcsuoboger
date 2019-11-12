@@ -68,10 +68,10 @@ sleep 1
 echo -e "${Info} 正在下载解压处理程序源码"
 wget -N --no-check-certificate "https://github.com/Anankke/SSPanel-Uim/archive/dev.zip"
 unzip dev.zip
-cd ss-panel-v3-mod_Uim-dev
+cd SSPanel-Uim-dev
 mv * .[^.]* /www/wwwroot/$website/
 cd ..
-rm -rf dev.zip ss-panel-v3-mod_Uim-dev/
+rm -rf dev.zip SSPanel-Uim-dev/
 echo -e "${Info} 下载解压处理程序源码已完成"
 sleep 1
 ##处理php函数
