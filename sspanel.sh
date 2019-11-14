@@ -31,7 +31,7 @@ clear
 #宝塔sspanel-v3-mod-uim-dev快速部署工具
 echo -e "感谢使用 “\033[32m 宝塔sspanel-v3-mod-uim-dev快速部署工具 \033[0m”"
 echo "----------------------------------------------------------------------------"
-echo -e "请注意这些要求:“\033[31m 宝塔版本=5.9 \033[0m”，添加网址PHP版本必须选择为“\033[31m PHP7.3 \033[0m”,添加完成后地址不要改动！"
+echo -e "请注意这些要求:“\033[31m 宝塔版本=5.9 \033[0m”，添加网址PHP版本必须选择为“\033[31m PHP7.1 \033[0m”,添加完成后地址不要改动！"
 echo "----------------------------------------------------------------------------"
 stty erase '^H' && read -p "请输入宝塔面板添加的网站域名,请不要修改添加之后的默认地址（例如:www.baidu.com，不带http/https）：" website
 stty erase '^H' && read -p "请输入宝塔面板添加的MySQL用户名：" mysqlusername
@@ -66,22 +66,21 @@ echo -e "${Info} 检测安装git、unzip、crontab工具已完成"
 sleep 1
 ##下载解压拷贝源码
 echo -e "${Info} 正在下载解压处理程序源码"
-wget -N --no-check-certificate "https://codeload.github.com/Anankke/SSPanel-Uim/zip/dev/SSPanel-Uim-dev.zip"
-unzip SSPanel-Uim-dev.zip
+unzip dev.zip
 cd ss-panel-v3-mod_Uim-dev
 mv * .[^.]* /www/wwwroot/$website/
 cd ..
-rm -rf SSPanel-Uim-dev.zip ss-panel-v3-mod_Uim-dev/
+rm -rf dev.zip ss-panel-v3-mod_Uim-dev
 echo -e "${Info} 下载解压处理程序源码已完成"
 sleep 1
 ##处理php函数
 echo -e "${Info} 正在处理宝塔php内容"
-sed -i 's/system,//g' /www/server/php/73/etc/php.ini
-sed -i 's/proc_open,//g' /www/server/php/73/etc/php.ini
-sed -i 's/proc_get_status,//g' /www/server/php/73/etc/php.ini
-sed -i 's/putenv,//g' /www/server/php/73/etc/php.ini
-sed -i 's/dynamic/static/g' /www/server/php/73/etc/php-fpm.conf
-sed -i 's/display_errors = On/display_errors = Off/g' /www/server/php/73/etc/php.ini
+sed -i 's/system,//g' /www/server/php/71/etc/php.ini
+sed -i 's/proc_open,//g' /www/server/php/71/etc/php.ini
+sed -i 's/proc_get_status,//g' /www/server/php/71/etc/php.ini
+sed -i 's/putenv,//g' /www/server/php/71/etc/php.ini
+sed -i 's/dynamic/static/g' /www/server/php/71/etc/php-fpm.conf
+sed -i 's/display_errors = On/display_errors = Off/g' /www/server/php/71/etc/php.ini
 echo -e "${Info} 处理宝塔php内容已完成"
 sleep 1
 ##导入数据库
@@ -108,7 +107,7 @@ sleep 1
 ##初始化站点信息
 echo -e "${Info} 正在配置站点基本信息"
 cd /www/wwwroot/$website
-cp config/.config.example.php config/.config.php
+cp config/.config.php.for7color config/.config.php
 sed -i "s/websiteurl/$website/g" /www/wwwroot/$website/config/.config.php
 sed -i "s/sspanel-mukey/$sspanelmukey/g" /www/wwwroot/$website/config/.config.php
 sed -i "s/sspanel-db-databasename/$mysqldatabase/g" /www/wwwroot/$website/config/.config.php
@@ -213,6 +212,4 @@ echo -e "${Info} 部署完成，请打开http://$website即可浏览"
 echo -e "${Info} 默认生成的管理员用户名：admin 密码为7colorblog"
 echo -e "${Info} 如果打不开站点，请到宝塔面板中软件管理重启nginx和php7.1"
 echo -e "${Info} 自定义配置，请打开/www/wwwroot/$website/config/.config.php进行修改"
-echo -e "${Info} github地址:https://github.com/lizhongnian/sspanel-v3-mod-uim-bt"
-echo -e "${Info} 博客地址:https://www.7colorblog.com/"
 echo "--------------------------------------------------------------------------------"
